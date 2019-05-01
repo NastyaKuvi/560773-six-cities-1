@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Анастасия Куванова](https://up.htmlacademy.ru/react/1/user/560773).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Кашапов](https://htmlacademy.ru/profile/ksneo).
 
 ---
 
