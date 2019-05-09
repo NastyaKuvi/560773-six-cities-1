@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export const MainScreen = () => {
+export const MainScreen = (props) => {
+  const {locations, places} = props;
   return <React.Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-arrow-select" viewBox="0 0 7 4"><path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z"></path></symbol><symbol id="icon-bookmark" viewBox="0 0 17 18"><path d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"></path></symbol><symbol id="icon-star" viewBox="0 0 13 12"><path fillRule="evenodd" clipRule="evenodd" d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"></path></symbol></svg>
@@ -34,36 +36,13 @@ export const MainScreen = () => {
       <div className="cities tabs">
         <section className="locations container">
           <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
+            {locations.list.map((it, i) => {
+              return <li key={i} className="locations__item">
+                <a className={`locations__item-link tabs__item ${it === locations.active ? `tabs__item--active` : ``}`} href="#">
+                  <span>{it}</span>
+                </a>
+              </li>;
+            })}
           </ul>
         </section>
       </div>
@@ -123,7 +102,7 @@ export const MainScreen = () => {
                     </div>
                   </div>
                   <h2 className="place-card__name">
-                    <a href="#">Beautiful &amp; luxurious apartment at great location</a>
+                    <a href="#">{places[0]}</a>
                   </h2>
                   <p className="place-card__type">Apartment</p>
                 </div>
@@ -155,7 +134,7 @@ export const MainScreen = () => {
                     </div>
                   </div>
                   <h2 className="place-card__name">
-                    <a href="#">Wood and stone place</a>
+                    <a href="#">{places[1]}</a>
                   </h2>
                   <p className="place-card__type">Private room</p>
                 </div>
@@ -187,7 +166,7 @@ export const MainScreen = () => {
                     </div>
                   </div>
                   <h2 className="place-card__name">
-                    <a href="#">Canal View Prinsengracht</a>
+                    <a href="#">{places[2]}</a>
                   </h2>
                   <p className="place-card__type">Apartment</p>
                 </div>
@@ -222,41 +201,9 @@ export const MainScreen = () => {
                     </div>
                   </div>
                   <h2 className="place-card__name">
-                    <a href="#">Nice, cozy, warm big bed apartment</a>
+                    <a href="#">{places[3]}</a>
                   </h2>
                   <p className="place-card__type">Apartment</p>
-                </div>
-              </article>
-
-              <article className="cities__place-card place-card">
-                <div className="cities__image-wrapper place-card__image-wrapper">
-                  <a href="#">
-                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
-                  </a>
-                </div>
-                <div className="place-card__info">
-                  <div className="place-card__price-wrapper">
-                    <div className="place-card__price">
-                      <b className="place-card__price-value">&euro;80</b>
-                      <span className="place-card__price-text">&#47;&nbsp;night</span>
-                    </div>
-                    <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-                      <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinkHref="#icon-bookmark-active"></use>
-                      </svg>
-                      <span className="visually-hidden">In bookmarks</span>
-                    </button>
-                  </div>
-                  <div className="place-card__rating rating">
-                    <div className="place-card__stars rating__stars">
-                      <span style={{width: `80%`}}></span>
-                      <span className="visually-hidden">Rating</span>
-                    </div>
-                  </div>
-                  <h2 className="place-card__name">
-                    <a href="#">Wood and stone place</a>
-                  </h2>
-                  <p className="place-card__type">Private room</p>
                 </div>
               </article>
             </div>
@@ -268,4 +215,9 @@ export const MainScreen = () => {
       </div>
     </main>
   </React.Fragment>;
+};
+
+MainScreen.propTypes = {
+  locations: PropTypes.object,
+  places: PropTypes.array
 };
