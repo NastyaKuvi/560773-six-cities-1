@@ -13,5 +13,6 @@ export const App = () => {
       `Canal View Prinsengracht`,
       `Nice, cozy, warm big bed apartment`,
     ]}
+    onClick = {() => {}}
   />;
 };
