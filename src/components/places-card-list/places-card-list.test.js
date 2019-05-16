@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {MainScreen} from "./main-screen";
+import PlacesCardList from "./places-card-list.jsx";
 
 const mock = {
   places: [
@@ -37,14 +37,11 @@ const mock = {
   ]
 };
 
-it(`main-screen component correctly renders`, () => {
-  const {places} = mock;
+
+it(`places-card-list component correctly renders`, () => {
+  let {places} = mock;
   const comp = renderer.create(
-      <MainScreen
-        locations = { {
-          list: [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`],
-          active: `Amsterdam`
-        } }
+      <PlacesCardList
         places = {places}
       />).toJSON();
 
