@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {App} from "./components/app/app.jsx";
-import mock from "./mocks/offers.js";
+import {Offers, City} from "./mocks/offers.js";
 
 ReactDOM.render(
     <App
-      places = {mock}
+      places = {Offers}
+      city = {City}
     />,
     document.getElementById(`root`)
 );
