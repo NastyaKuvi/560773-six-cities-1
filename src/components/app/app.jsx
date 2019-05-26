@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import {MainScreen} from "../main-screen/main-screen.jsx";
 
 export const App = (props) => {
-  const {places} = props;
+  const {places, city} = props;
   return <MainScreen
     locations = { {
       list: [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`],
       active: `Amsterdam`
     } }
     places = {places}
+    city = {city}
     onClick = {() => {}}
   />;
 };
@@ -24,5 +25,6 @@ App.propTypes = {
     isBookmark: false,
     name: PropTypes.string.isRequired,
     type: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]).isRequired
-  }))
+  })),
+  city: PropTypes.arrayOf(PropTypes.number).isRequired
 };

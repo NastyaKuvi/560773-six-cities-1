@@ -2,7 +2,12 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {MainScreen} from "./main-screen";
 
+const div = global.document.createElement(`div`);
+div.setAttribute(`id`, `map`);
+global.document.body.appendChild(div);
+
 const mock = {
+  city: [52.38333, 4.9],
   places: [
     {
       id: 0,
@@ -12,7 +17,8 @@ const mock = {
       rating: 80,
       isBookmark: false,
       name: `Canal View Prinsengracht`,
-      type: `apartment`
+      type: `apartment`,
+      coord: [52.3809553943508, 4.939309666406198]
     },
     {
       id: 1,
@@ -22,7 +28,8 @@ const mock = {
       rating: 100,
       isBookmark: false,
       name: `Nice, cozy, warm big bed apartment`,
-      type: `apartment`
+      type: `apartment`,
+      coord: [52.3809553943508, 4.939309666406198]
     },
     {
       id: 2,
@@ -32,13 +39,14 @@ const mock = {
       rating: 80,
       isBookmark: false,
       name: `Wood and stone place`,
-      type: `room`
+      type: `room`,
+      coord: [52.3809553943508, 4.939309666406198]
     }
   ]
 };
 
 it(`main-screen component correctly renders`, () => {
-  const {places} = mock;
+  const {places, city} = mock;
   const comp = renderer.create(
       <MainScreen
         locations = { {
@@ -46,6 +54,7 @@ it(`main-screen component correctly renders`, () => {
           active: `Amsterdam`
         } }
         places = {places}
+        city = {city}
       />).toJSON();
 
   expect(comp).toMatchSnapshot();
